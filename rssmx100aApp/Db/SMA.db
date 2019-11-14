@@ -10,6 +10,7 @@
 #
 # Edited by Vitor Finotti Ferreira (LNLS)
 # Edited by Letícia Garcez Capovilla (LNLS)
+# Edited by Henrique Silva (ESS)
 
 ##########################################################################
 # This file contains 7 categories of PVs, which are:
@@ -1431,25 +1432,25 @@ record(bo, "$(P)$(R)ModAM-Sel") {
   field(FLNK,"$(P)$(R)ModAM-Sts")
 }
 
-# FM State
-
-record(bi, "$(P)$(R)ModFM-Sts") {
-  field(DESC, "Get FM State (OFF|ON)")
-  field(SCAN, "1 second")
-  field(DTYP, "stream")
-  field(ZNAM, "OFF")
-  field(ONAM, "ON")
-  field(INP, "@rssma100a.proto inFMState $(PORT)")
-}
-
-record(bo, "$(P)$(R)ModFM-Sel") {
-  field(DESC, "Enable/Disable FM (OFF|ON)")
-  field(DTYP, "stream")
-  field(ZNAM, "OFF")
-  field(ONAM, "ON")
-  field(OUT, "@rssma100a.proto outFMState($1) $(PORT)")
-  field(FLNK,"$(P)$(R)ModFM-Sts")
-}
+## FM State
+#
+#record(bi, "$(P)$(R)ModFM-Sts") {
+#  field(DESC, "Get FM State (OFF|ON)")
+#  field(SCAN, "1 second")
+#  field(DTYP, "stream")
+#  field(ZNAM, "OFF")
+#  field(ONAM, "ON")
+#  field(INP, "@rssma100a.proto inFMState $(PORT)")
+#}
+#
+#record(bo, "$(P)$(R)ModFM-Sel") {
+#  field(DESC, "Enable/Disable FM (OFF|ON)")
+#  field(DTYP, "stream")
+#  field(ZNAM, "OFF")
+#  field(ONAM, "ON")
+#  field(OUT, "@rssma100a.proto outFMState($1) $(PORT)")
+#  field(FLNK,"$(P)$(R)ModFM-Sts")
+#}
 
 # AMPLITUDE MODULATION SOURCE
 
@@ -1543,57 +1544,57 @@ record(bo, "$(P)$(R)ModPG-Sel") {
   field(FLNK,"$(P)$(R)ModPG-Sts")
 }
 
-# FREQUENCY MODULATION SOURCE  - ONLY AVAILABLE FOR SMA100A
-
-record(mbbi, "$(P)$(R)ModFMSrc-Sts") {
-  field(DESC, "Get FM Source (INT|EXT|INT,EXT|EDIG)")
-  field(SCAN, "1 second")
-  field(DTYP, "stream")
-  field(ZRST, "INT")
-  field(ZRVL, "0")
-  field(ONST, "EXT")
-  field(ONVL, "1")
-  field(TWST, "INT,EXT")
-  field(TWVL, "2")
-  field(THST, "EDIG")
-  field(THVL, "3")
-  field(INP, "@rssma100a.proto inFMSour $(PORT)")
-}
-
-record(mbbo, "$(P)$(R)ModFMSrc-Sel") {
-  field(DESC, "Set FM Source (INT|EXT|INT,EXT|EDIG)")
-  field(DTYP, "stream")
-  field(ZRST, "INT")
-  field(ZRVL, "0")
-  field(ONST, "EXT")
-  field(ONVL, "1")
-  field(TWST, "INT,EXT")
-  field(TWVL, "2")
-  field(THST, "EDIG")
-  field(THVL, "3")
-  field(OUT, "@rssma100a.proto outFMSour($1) $(PORT)")
-  field(FLNK,"$(P)$(R)ModFMSrc-Sts")
-}
-
-# PULSE MODULATION STATE
-
-record(bi, "$(P)$(R)ModPulM-Sts") {
-  field(DESC, "Get PulM Status (OFF|ON)")
-  field(SCAN, "1 second")
-  field(DTYP, "stream")
-  field(ZNAM, "OFF")
-  field(ONAM, "ON")
-  field(INP, "@rssma100a.proto inPulMState $(PORT)")
-}
-
-record(bo, "$(P)$(R)ModPulM-Sel") {
-  field(DESC, "Enable/Disable PulM (OFF|ON)")
-  field(DTYP, "stream")
-  field(ZNAM, "OFF")
-  field(ONAM, "ON")
-  field(OUT, "@rssma100a.proto outPulMState($1) $(PORT)")
-  field(FLNK,"$(P)$(R)ModPulM-Sts")
-}
+## FREQUENCY MODULATION SOURCE  - ONLY AVAILABLE FOR SMA100A
+#
+#record(mbbi, "$(P)$(R)ModFMSrc-Sts") {
+#  field(DESC, "Get FM Source (INT|EXT|INT,EXT|EDIG)")
+#  field(SCAN, "1 second")
+#  field(DTYP, "stream")
+#  field(ZRST, "INT")
+#  field(ZRVL, "0")
+#  field(ONST, "EXT")
+#  field(ONVL, "1")
+#  field(TWST, "INT,EXT")
+#  field(TWVL, "2")
+#  field(THST, "EDIG")
+#  field(THVL, "3")
+#  field(INP, "@rssma100a.proto inFMSour $(PORT)")
+#}
+#
+#record(mbbo, "$(P)$(R)ModFMSrc-Sel") {
+#  field(DESC, "Set FM Source (INT|EXT|INT,EXT|EDIG)")
+#  field(DTYP, "stream")
+#  field(ZRST, "INT")
+#  field(ZRVL, "0")
+#  field(ONST, "EXT")
+#  field(ONVL, "1")
+#  field(TWST, "INT,EXT")
+#  field(TWVL, "2")
+#  field(THST, "EDIG")
+#  field(THVL, "3")
+#  field(OUT, "@rssma100a.proto outFMSour($1) $(PORT)")
+#  field(FLNK,"$(P)$(R)ModFMSrc-Sts")
+#}
+#
+## PULSE MODULATION STATE
+#
+#record(bi, "$(P)$(R)ModPulM-Sts") {
+#  field(DESC, "Get PulM Status (OFF|ON)")
+#  field(SCAN, "1 second")
+#  field(DTYP, "stream")
+#  field(ZNAM, "OFF")
+#  field(ONAM, "ON")
+#  field(INP, "@rssma100a.proto inPulMState $(PORT)")
+#}
+#
+#record(bo, "$(P)$(R)ModPulM-Sel") {
+#  field(DESC, "Enable/Disable PulM (OFF|ON)")
+#  field(DTYP, "stream")
+#  field(ZNAM, "OFF")
+#  field(ONAM, "ON")
+#  field(OUT, "@rssma100a.proto outPulMState($1) $(PORT)")
+#  field(FLNK,"$(P)$(R)ModPulM-Sts")
+#}
 
 # PULSE MODULATION WIDTH
 
@@ -1848,206 +1849,206 @@ record(mbbo, "$(P)$(R)ModPulMTrigMode-Sel") {
   field(FLNK,"$(P)$(R)ModPulMTrigMode-Sts")
 }
 
-# FM DEVIATION
-
-record(ai, "$(P)$(R)ModFMDev-RB") {
-  field(DESC, "Get FM Deviation")
-  field(SCAN, "1 second")
-  field(DTYP, "stream")
-  field(PREC, "1")
-  field(EGU, "Hz")
-  field(INP, "@rssma100a.proto inMFMDev $(PORT)")
-}
-
-record(ao, "$(P)$(R)ModFMDev-SP") {
-  field(DESC, "Set FM Deviation")
-  field(DTYP, "stream")
-  field(EGU, "Hz")
-  field(OUT, "@rssma100a.proto outMFMDev($1) $(PORT)")
-  field(FLNK,"$(P)$(R)ModFMDev-RB")
-}
-
-# FM COUPLING MODE
-
-record(bi, "$(P)$(R)ModFMExtCoup-Sts") {
-  field(DESC, "Get FM Coupling Mode (AC|DC)")
-  field(SCAN, "1 second")
-  field(DTYP, "stream")
-  field(ZNAM, "AC")
-  field(ONAM, "DC")
-  field(INP, "@rssma100a.proto inMFMExtCoup $(PORT)")
-}
-
-record(bo, "$(P)$(R)ModFMExtCoup-Sel") {
-  field(DESC, "Set FM Coupling Mode (AC|DC)")
-  field(DTYP, "stream")
-  field(ZNAM, "AC")
-  field(ONAM, "DC")
-  field(OUT, "@rssma100a.proto outMFMExtCoup($1) $(PORT)")
-  field(FLNK,"$(P)$(R)ModFMExtCoup-Sts")
-}
-
-# FM EXTERNAL DEVIATION
-
-record(ai, "$(P)$(R)ModFMExtDev-RB") {
-  field(DESC, "Get External FM Deviation")
-  field(SCAN, "1 second")
-  field(DTYP, "stream")
-  field(PREC, "1")
-  field(EGU, "Hz")
-  field(INP, "@rssma100a.proto inMFMExtDev $(PORT)")
-}
-
-record(ao, "$(P)$(R)ModFMExtDev-SP") {
-  field(DESC, "Set External FM Deviation")
-  field(DTYP, "stream")
-  field(EGU, "Hz")
-  field(OUT, "@rssma100a.proto outMFMExtDev($1) $(PORT)")
-  field(FLNK,"$(P)$(R)ModFMExtDev-RB")
-}
-
-# FM INTERNAL DEVIATION
-
-record(ai, "$(P)$(R)ModFMIntDev-RB") {
-  field(DESC, "Get FM Internal Deviation")
-  field(SCAN, "1 second")
-  field(DTYP, "stream")
-  field(PREC, "1")
-  field(EGU, "Hz")
-  field(INP, "@rssma100a.proto inMFMIntDev $(PORT)")
-}
-
-record(ao, "$(P)$(R)ModFMIntDev-SP") {
-  field(DESC, "Set FM External Deviation")
-  field(DTYP, "stream")
-  field(EGU, "Hz")
-  field(OUT, "@rssma100a.proto outMFMIntDev($1) $(PORT)")
-  field(FLNK,"$(P)$(R)ModFMIntDev-RB")
-}
-
-# FM INTERNAL MOD. SIGNAL SOURCE
-
-record(mbbi, "$(P)$(R)ModFMIntSrc-Sts") {
-  field(DESC, "Get Internal FM Source")
-  field(SCAN, "1 second")
-  field(DTYP, "stream")
-  field(ZRST, "NONE")
-  field(ZRVL, "0")
-  field(ONST, "LF1")
-  field(ONVL, "1")
-  field(TWST, "LF2")
-  field(TWVL, "2")
-  field(THST, "LF12")
-  field(THVL, "3")
-  field(FRST, "NOIS")
-  field(FRVL, "4")
-  field(FVST, "LF1N")
-  field(FVVL, "5")
-  field(SXST, "LF2N")
-  field(SXVL, "6")
-  field(INP, "@rssma100a.proto inMFMIntSrc $(PORT)")
-}
-
-record(mbbo, "$(P)$(R)ModFMIntSrc-Sel") {
-  field(DESC, "Set Internal FM Source")
-  field(DTYP, "stream")
-  field(ZRST, "NONE")
-  field(ZRVL, "0")
-  field(ONST, "LF1")
-  field(ONVL, "1")
-  field(TWST, "LF2")
-  field(TWVL, "2")
-  field(THST, "LF12")
-  field(THVL, "3")
-  field(FRST, "NOIS")
-  field(FRVL, "4")
-  field(FVST, "LF1N")
-  field(FVVL, "5")
-  field(SXST, "LF2N")
-  field(SXVL, "6")
-  field(OUT, "@rssma100a.proto outMFMIntSrc($1) $(PORT)")
-  field(FLNK,"$(P)$(R)ModFMIntSrc-Sts")
-}
-
-# POLARITY OF GATE SIGNAL
-
-record(bi, "$(P)$(R)ModPulMExtGatePol-Sts") {
-  field(DESC, "Get PulM Gate Polarity (NORM|INV)")
-  field(SCAN, "1 second")
-  field(DTYP, "stream")
-  field(ZNAM, "NORM")
-  field(ONAM, "INV")
-  field(INP, "@rssma100a.proto inMPulMExtGatePol $(PORT)")
-}
-
-record(bo, "$(P)$(R)ModPulMExtGatePol-Sel") {
-  field(DESC, "Set PulM Gate Polarity (NORM|INV)")
-  field(DTYP, "stream")
-  field(ZNAM, "NORM")
-  field(ONAM, "INV")
-  field(OUT, "@rssma100a.proto outMPulMExtGatePol($1) $(PORT)")
-  field(FLNK,"$(P)$(R)ModPulMExtGatePol-Sts")
-}
-
-# PULM IMPEDANCE FOR EXTERNAL TRIGGER
-
-record(bi, "$(P)$(R)ModPulMExtImpdTrig-Sts") {
-  field(DESC, "Get PulM Impedance")
-  field(SCAN, "1 second")
-  field(DTYP, "stream")
-  field(ZNAM, "50")
-  field(ONAM, "10k")
-  field(INP, "@rssma100a.proto inMPulMExtImpdTrig $(PORT)")
-}
-
-record(bo, "$(P)$(R)ModPulMExtImpdTrig-Sel") {
-  field(DESC, "Set PulM Impedance (G50|G10K)")
-  field(DTYP, "stream")
-  field(ZNAM, "G50")
-  field(ONAM, "G10K")
-  field(OUT, "@rssma100a.proto outMPulMExtImpdTrig($1) $(PORT)")
-  field(FLNK,"$(P)$(R)ModPulMExtImpdTrig-Sts")
-}
-
-# PULM TRIGGER POLARITY OF ACTIVE SLOPE
-
-record(bi, "$(P)$(R)ModPulMExtSlopeTrig-Sts") {
-  field(DESC, "Get Slope Polarity")
-  field(SCAN, "1 second")
-  field(DTYP, "stream")
-  field(ZNAM, "NEGATIVE")
-  field(ONAM, "POSITIVE")
-  field(INP, "@rssma100a.proto inMPulMExtSlopeTrig $(PORT)")
-}
-
-record(bo, "$(P)$(R)ModPulMExtSlopeTrig-Sel") {
-  field(DESC, "Set Slope Polarity (NEG|POS)")
-  field(DTYP, "stream")
-  field(ZNAM, "NEG")
-  field(ONAM, "POS")
-  field(OUT, "@rssma100a.proto outMPulMExtSlopeTrig($1) $(PORT)")
-  field(FLNK,"$(P)$(R)ModPulMExtSlopeTrig-Sts")
-}
-
-# FM IMPEDANCE FOR EXTERNAL MODULATION
-
-record(bi, "$(P)$(R)ModFMExtImpd-Sts") {
-  field(DESC, "Get Impedance (HIGH|G50)")
-  field(SCAN, "1 second")
-  field(DTYP, "stream")
-  field(ZNAM, "HIGH")
-  field(ONAM, "50")
-  field(INP, "@rssma100a.proto inMFMExtImpd $(PORT)")
-}
-
-record(bo, "$(P)$(R)ModFMExtImpd-Sel") {
-  field(DESC, "Set Impedance (HIGH|G50)")
-  field(DTYP, "stream")
-  field(ZNAM, "HIGH")
-  field(ONAM, "G50")
-  field(OUT, "@rssma100a.proto outMFMExtImpd($1) $(PORT)")
-  field(FLNK,"$(P)$(R)ModFMExtImpd-Sts")
-}
+## FM DEVIATION
+#
+#record(ai, "$(P)$(R)ModFMDev-RB") {
+#  field(DESC, "Get FM Deviation")
+#  field(SCAN, "1 second")
+#  field(DTYP, "stream")
+#  field(PREC, "1")
+#  field(EGU, "Hz")
+#  field(INP, "@rssma100a.proto inMFMDev $(PORT)")
+#}
+#
+#record(ao, "$(P)$(R)ModFMDev-SP") {
+#  field(DESC, "Set FM Deviation")
+#  field(DTYP, "stream")
+#  field(EGU, "Hz")
+#  field(OUT, "@rssma100a.proto outMFMDev($1) $(PORT)")
+#  field(FLNK,"$(P)$(R)ModFMDev-RB")
+#}
+#
+## FM COUPLING MODE
+#
+#record(bi, "$(P)$(R)ModFMExtCoup-Sts") {
+#  field(DESC, "Get FM Coupling Mode (AC|DC)")
+#  field(SCAN, "1 second")
+#  field(DTYP, "stream")
+#  field(ZNAM, "AC")
+#  field(ONAM, "DC")
+#  field(INP, "@rssma100a.proto inMFMExtCoup $(PORT)")
+#}
+#
+#record(bo, "$(P)$(R)ModFMExtCoup-Sel") {
+#  field(DESC, "Set FM Coupling Mode (AC|DC)")
+#  field(DTYP, "stream")
+#  field(ZNAM, "AC")
+#  field(ONAM, "DC")
+#  field(OUT, "@rssma100a.proto outMFMExtCoup($1) $(PORT)")
+#  field(FLNK,"$(P)$(R)ModFMExtCoup-Sts")
+#}
+#
+## FM EXTERNAL DEVIATION
+#
+#record(ai, "$(P)$(R)ModFMExtDev-RB") {
+#  field(DESC, "Get External FM Deviation")
+#  field(SCAN, "1 second")
+#  field(DTYP, "stream")
+#  field(PREC, "1")
+#  field(EGU, "Hz")
+#  field(INP, "@rssma100a.proto inMFMExtDev $(PORT)")
+#}
+#
+#record(ao, "$(P)$(R)ModFMExtDev-SP") {
+#  field(DESC, "Set External FM Deviation")
+#  field(DTYP, "stream")
+#  field(EGU, "Hz")
+#  field(OUT, "@rssma100a.proto outMFMExtDev($1) $(PORT)")
+#  field(FLNK,"$(P)$(R)ModFMExtDev-RB")
+#}
+#
+## FM INTERNAL DEVIATION
+#
+#record(ai, "$(P)$(R)ModFMIntDev-RB") {
+#  field(DESC, "Get FM Internal Deviation")
+#  field(SCAN, "1 second")
+#  field(DTYP, "stream")
+#  field(PREC, "1")
+#  field(EGU, "Hz")
+#  field(INP, "@rssma100a.proto inMFMIntDev $(PORT)")
+#}
+#
+#record(ao, "$(P)$(R)ModFMIntDev-SP") {
+#  field(DESC, "Set FM External Deviation")
+#  field(DTYP, "stream")
+#  field(EGU, "Hz")
+#  field(OUT, "@rssma100a.proto outMFMIntDev($1) $(PORT)")
+#  field(FLNK,"$(P)$(R)ModFMIntDev-RB")
+#}
+#
+## FM INTERNAL MOD. SIGNAL SOURCE
+#
+#record(mbbi, "$(P)$(R)ModFMIntSrc-Sts") {
+#  field(DESC, "Get Internal FM Source")
+#  field(SCAN, "1 second")
+#  field(DTYP, "stream")
+#  field(ZRST, "NONE")
+#  field(ZRVL, "0")
+#  field(ONST, "LF1")
+#  field(ONVL, "1")
+#  field(TWST, "LF2")
+#  field(TWVL, "2")
+#  field(THST, "LF12")
+#  field(THVL, "3")
+#  field(FRST, "NOIS")
+#  field(FRVL, "4")
+#  field(FVST, "LF1N")
+#  field(FVVL, "5")
+#  field(SXST, "LF2N")
+#  field(SXVL, "6")
+#  field(INP, "@rssma100a.proto inMFMIntSrc $(PORT)")
+#}
+#
+#record(mbbo, "$(P)$(R)ModFMIntSrc-Sel") {
+#  field(DESC, "Set Internal FM Source")
+#  field(DTYP, "stream")
+#  field(ZRST, "NONE")
+#  field(ZRVL, "0")
+#  field(ONST, "LF1")
+#  field(ONVL, "1")
+#  field(TWST, "LF2")
+#  field(TWVL, "2")
+#  field(THST, "LF12")
+#  field(THVL, "3")
+#  field(FRST, "NOIS")
+#  field(FRVL, "4")
+#  field(FVST, "LF1N")
+#  field(FVVL, "5")
+#  field(SXST, "LF2N")
+#  field(SXVL, "6")
+#  field(OUT, "@rssma100a.proto outMFMIntSrc($1) $(PORT)")
+#  field(FLNK,"$(P)$(R)ModFMIntSrc-Sts")
+#}
+#
+## POLARITY OF GATE SIGNAL
+#
+#record(bi, "$(P)$(R)ModPulMExtGatePol-Sts") {
+#  field(DESC, "Get PulM Gate Polarity (NORM|INV)")
+#  field(SCAN, "1 second")
+#  field(DTYP, "stream")
+#  field(ZNAM, "NORM")
+#  field(ONAM, "INV")
+#  field(INP, "@rssma100a.proto inMPulMExtGatePol $(PORT)")
+#}
+#
+#record(bo, "$(P)$(R)ModPulMExtGatePol-Sel") {
+#  field(DESC, "Set PulM Gate Polarity (NORM|INV)")
+#  field(DTYP, "stream")
+#  field(ZNAM, "NORM")
+#  field(ONAM, "INV")
+#  field(OUT, "@rssma100a.proto outMPulMExtGatePol($1) $(PORT)")
+#  field(FLNK,"$(P)$(R)ModPulMExtGatePol-Sts")
+#}
+#
+## PULM IMPEDANCE FOR EXTERNAL TRIGGER
+#
+#record(bi, "$(P)$(R)ModPulMExtImpdTrig-Sts") {
+#  field(DESC, "Get PulM Impedance")
+#  field(SCAN, "1 second")
+#  field(DTYP, "stream")
+#  field(ZNAM, "50")
+#  field(ONAM, "10k")
+#  field(INP, "@rssma100a.proto inMPulMExtImpdTrig $(PORT)")
+#}
+#
+#record(bo, "$(P)$(R)ModPulMExtImpdTrig-Sel") {
+#  field(DESC, "Set PulM Impedance (G50|G10K)")
+#  field(DTYP, "stream")
+#  field(ZNAM, "G50")
+#  field(ONAM, "G10K")
+#  field(OUT, "@rssma100a.proto outMPulMExtImpdTrig($1) $(PORT)")
+#  field(FLNK,"$(P)$(R)ModPulMExtImpdTrig-Sts")
+#}
+#
+## PULM TRIGGER POLARITY OF ACTIVE SLOPE
+#
+#record(bi, "$(P)$(R)ModPulMExtSlopeTrig-Sts") {
+#  field(DESC, "Get Slope Polarity")
+#  field(SCAN, "1 second")
+#  field(DTYP, "stream")
+#  field(ZNAM, "NEGATIVE")
+#  field(ONAM, "POSITIVE")
+#  field(INP, "@rssma100a.proto inMPulMExtSlopeTrig $(PORT)")
+#}
+#
+#record(bo, "$(P)$(R)ModPulMExtSlopeTrig-Sel") {
+#  field(DESC, "Set Slope Polarity (NEG|POS)")
+#  field(DTYP, "stream")
+#  field(ZNAM, "NEG")
+#  field(ONAM, "POS")
+#  field(OUT, "@rssma100a.proto outMPulMExtSlopeTrig($1) $(PORT)")
+#  field(FLNK,"$(P)$(R)ModPulMExtSlopeTrig-Sts")
+#}
+#
+## FM IMPEDANCE FOR EXTERNAL MODULATION
+#
+#record(bi, "$(P)$(R)ModFMExtImpd-Sts") {
+#  field(DESC, "Get Impedance (HIGH|G50)")
+#  field(SCAN, "1 second")
+#  field(DTYP, "stream")
+#  field(ZNAM, "HIGH")
+#  field(ONAM, "50")
+#  field(INP, "@rssma100a.proto inMFMExtImpd $(PORT)")
+#}
+#
+#record(bo, "$(P)$(R)ModFMExtImpd-Sel") {
+#  field(DESC, "Set Impedance (HIGH|G50)")
+#  field(DTYP, "stream")
+#  field(ZNAM, "HIGH")
+#  field(ONAM, "G50")
+#  field(OUT, "@rssma100a.proto outMFMExtImpd($1) $(PORT)")
+#  field(FLNK,"$(P)$(R)ModFMExtImpd-Sts")
+#}
 
 # LF OUTPUT STATE
 
@@ -2387,81 +2388,81 @@ record(bo, "$(P)$(R)RoscExt-Sel") {
 ###########################################################################
 # CLOCK SYNTHESIS FREQUENCY
 
-record(ai, "$(P)$(R)CsynFreq-RB") {
-  field(DESC, "Get Clock Synthesis Frequency")
-  field(SCAN, "1 second")
-  field(DTYP, "stream")
-  field(PREC, "1")
-  field(EGU, "Hz")
-  field(INP, "@rssma100a.proto inCsynFreq $(PORT)")
-}
-
-record(ao, "$(P)$(R)CsynFreq-SP") {
-  field(DESC, "Set Clock Synthesis Frequency")
-  field(DTYP, "stream")
-  field(EGU, "Hz")
-  field(OUT, "@rssma100a.proto outCsynFreq($1) $(PORT)")
-  field(FLNK,"$(P)$(R)CsynFreq-RB")
-}
-
-# CLOCK SYNTHESIS STATE
-
-record(bi, "$(P)$(R)Csyn-Sts") {
-  field(DESC, "Get Clock Synthesis State (OFF|ON)")
-  field(SCAN, "1 second")
-  field(DTYP, "stream")
-  field(ZNAM, "OFF")
-  field(ONAM, "ON")
-  field(INP, "@rssma100a.proto inCsynState $(PORT)")
-}
-
-record(bo, "$(P)$(R)Csyn-Sel") {
-  field(DESC, "Set Clock Synthesis State (OFF|ON)")
-  field(DTYP, "stream")
-  field(ZNAM, "OFF")
-  field(ONAM, "ON")
-  field(OUT, "@rssma100a.proto outCsynState($1) $(PORT)")
-  field(FLNK,"$(P)$(R)Csyn-Sts")
-}
-
-# CLOCK SYNTHESIS DC OFFSET
-
-record(ai, "$(P)$(R)CsynOffset-RB") {
-  field(DESC, "Get DC Offset")
-  field(SCAN, "1 second")
-  field(DTYP, "stream")
-  field(PREC, "1")
-  field(EGU, "V")
-  field(INP, "@rssma100a.proto inCsynOffset $(PORT)")
-}
-
-record(ao, "$(P)$(R)CsynOffset-SP") {
-  field(DESC, "Set DC Offset")
-  field(DTYP, "stream")
-  field(EGU, "V")
-  field(OUT, "@rssma100a.proto outCsynOffset($1) $(PORT)")
-  field(FLNK,"$(P)$(R)CsynOffset-RB")
-}
-
-# OFFSET STATE
-
-record(bi, "$(P)$(R)CsynOffset-Sts") {
-  field(DESC, "Get Offset State (OFF|ON)")
-  field(SCAN, "1 second")
-  field(DTYP, "stream")
-  field(ZNAM, "OFF")
-  field(ONAM, "ON")
-  field(INP, "@rssma100a.proto inOffsetState $(PORT)")
-}
-
-record(bo, "$(P)$(R)CsynOffset-Sel") {
-  field(DESC, "Set Offset State (OFF|ON)")
-  field(DTYP, "stream")
-  field(ZNAM, "OFF")
-  field(ONAM, "ON")
-  field(OUT, "@rssma100a.proto OutOffsetState($1) $(PORT)")
-  field(FLNK,"$(P)$(R)CsynOffset-Sts")
-}
+#record(ai, "$(P)$(R)CsynFreq-RB") {
+#  field(DESC, "Get Clock Synthesis Frequency")
+#  field(SCAN, "1 second")
+#  field(DTYP, "stream")
+#  field(PREC, "1")
+#  field(EGU, "Hz")
+#  field(INP, "@rssma100a.proto inCsynFreq $(PORT)")
+#}
+#
+#record(ao, "$(P)$(R)CsynFreq-SP") {
+#  field(DESC, "Set Clock Synthesis Frequency")
+#  field(DTYP, "stream")
+#  field(EGU, "Hz")
+#  field(OUT, "@rssma100a.proto outCsynFreq($1) $(PORT)")
+#  field(FLNK,"$(P)$(R)CsynFreq-RB")
+#}
+#
+## CLOCK SYNTHESIS STATE
+#
+#record(bi, "$(P)$(R)Csyn-Sts") {
+#  field(DESC, "Get Clock Synthesis State (OFF|ON)")
+#  field(SCAN, "1 second")
+#  field(DTYP, "stream")
+#  field(ZNAM, "OFF")
+#  field(ONAM, "ON")
+#  field(INP, "@rssma100a.proto inCsynState $(PORT)")
+#}
+#
+#record(bo, "$(P)$(R)Csyn-Sel") {
+#  field(DESC, "Set Clock Synthesis State (OFF|ON)")
+#  field(DTYP, "stream")
+#  field(ZNAM, "OFF")
+#  field(ONAM, "ON")
+#  field(OUT, "@rssma100a.proto outCsynState($1) $(PORT)")
+#  field(FLNK,"$(P)$(R)Csyn-Sts")
+#}
+#
+## CLOCK SYNTHESIS DC OFFSET
+#
+#record(ai, "$(P)$(R)CsynOffset-RB") {
+#  field(DESC, "Get DC Offset")
+#  field(SCAN, "1 second")
+#  field(DTYP, "stream")
+#  field(PREC, "1")
+#  field(EGU, "V")
+#  field(INP, "@rssma100a.proto inCsynOffset $(PORT)")
+#}
+#
+#record(ao, "$(P)$(R)CsynOffset-SP") {
+#  field(DESC, "Set DC Offset")
+#  field(DTYP, "stream")
+#  field(EGU, "V")
+#  field(OUT, "@rssma100a.proto outCsynOffset($1) $(PORT)")
+#  field(FLNK,"$(P)$(R)CsynOffset-RB")
+#}
+#
+## OFFSET STATE
+#
+#record(bi, "$(P)$(R)CsynOffset-Sts") {
+#  field(DESC, "Get Offset State (OFF|ON)")
+#  field(SCAN, "1 second")
+#  field(DTYP, "stream")
+#  field(ZNAM, "OFF")
+#  field(ONAM, "ON")
+#  field(INP, "@rssma100a.proto inOffsetState $(PORT)")
+#}
+#
+#record(bo, "$(P)$(R)CsynOffset-Sel") {
+#  field(DESC, "Set Offset State (OFF|ON)")
+#  field(DTYP, "stream")
+#  field(ZNAM, "OFF")
+#  field(ONAM, "ON")
+#  field(OUT, "@rssma100a.proto OutOffsetState($1) $(PORT)")
+#  field(FLNK,"$(P)$(R)CsynOffset-Sts")
+#}
 ##########################################################################
 #
 ############################### NOISE ####################################
@@ -2573,4 +2574,3 @@ record(calc, "$(P)$(R)SaveTrg") {
   field(CALC, "A=1?!VAL:VAL")
   field(VAL, "0")
 }
-
